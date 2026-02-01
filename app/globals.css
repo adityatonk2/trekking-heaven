@@ -82,6 +82,11 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -92,6 +97,10 @@ body {
   background: var(--color-bg);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  overflow-wrap: break-word;
 }
 
 img {
@@ -120,6 +129,7 @@ button {
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08);
+  overflow: visible;
 }
 
 .nav-container {
@@ -130,6 +140,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  overflow: visible;
 }
 
 .logo {
@@ -161,6 +172,7 @@ button {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  overflow: visible;
 }
 
 .nav-link {
@@ -172,7 +184,8 @@ button {
   transition: color var(--transition-fast);
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-dropdown-trigger:hover {
   color: var(--color-primary);
 }
 
@@ -186,9 +199,21 @@ button {
   gap: 4px;
 }
 
-.nav-dropdown:hover .dropdown-menu {
+.nav-dropdown:hover .dropdown-menu,
+.nav-dropdown.is-open .dropdown-menu {
   opacity: 1;
   visibility: visible;
+}
+
+.nav-dropdown-trigger {
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  cursor: pointer;
+  padding: var(--space-sm) var(--space-sm);
 }
 
 .dropdown-menu {
@@ -205,6 +230,7 @@ button {
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--transition-fast), visibility var(--transition-fast);
+  z-index: 120;
 }
 
 .dropdown-menu a {
@@ -229,9 +255,14 @@ button {
   gap: 6px;
   width: 48px;
   height: 48px;
+  min-width: 48px;
+  min-height: 48px;
   padding: var(--space-sm);
   background: var(--color-accent);
   border-radius: 50%;
+  cursor: pointer;
+  z-index: 111;
+  position: relative;
 }
 
 .mobile-menu-btn span {
@@ -378,7 +409,7 @@ button {
     align-items: stretch;
     gap: var(--space-xs);
     padding: 0 var(--space-xs);
-    overflow-x: visible;
+    overflow-x: hidden;
     min-width: 0;
     width: 100%;
   }
@@ -2381,6 +2412,7 @@ button {
   margin: 0 auto;
   padding: var(--space-3xl) var(--space-lg);
   background: var(--color-bg);
+  overflow-x: hidden;
   background-image: repeating-linear-gradient(
     -45deg,
     transparent,
@@ -3172,6 +3204,7 @@ button {
   color: rgba(255, 255, 255, 0.9);
   margin-top: 0;
   border-top: 1px solid var(--color-border);
+  overflow-x: hidden;
 }
 
 .footer-pattern {
@@ -3421,20 +3454,23 @@ button {
     top: var(--nav-height);
     left: 0;
     right: 0;
+    z-index: 110;
     background: var(--color-bg);
     flex-direction: column;
     padding: var(--space-lg);
-    box-shadow: var(--shadow-card-hover);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height var(--transition-base), opacity var(--transition-base);
+    visibility: hidden;
+    transition: max-height 0.3s ease, opacity 0.25s ease, visibility 0.25s ease;
   }
 
   .nav-links.is-open {
     max-height: 80vh;
     overflow-y: auto;
     opacity: 1;
+    visibility: visible;
   }
 
   .nav-dropdown .dropdown-menu {
