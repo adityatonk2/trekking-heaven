@@ -3,14 +3,28 @@ import Image from 'next/image';
 import HeroSection from '@/components/HeroSection';
 import TrekSection from '@/components/TrekSection';
 import ReviewsSection from '@/components/ReviewsSection';
-import { trekSections } from '@/lib/trek-data';
+import { trekSections, type TrekSection as TrekSectionType } from '@/lib/trek-data';
+
+function deduplicateTrekSections(sections: TrekSectionType[]): TrekSectionType[] {
+  const seenSlugs = new Set<string>();
+  return sections.map((section) => ({
+    ...section,
+    treks: section.treks.filter((trek) => {
+      if (seenSlugs.has(trek.slug)) return false;
+      seenSlugs.add(trek.slug);
+      return true;
+    }),
+  })).filter((section) => section.treks.length > 0);
+}
+
+const uniqueTrekSections = deduplicateTrekSections(trekSections);
 
 export default function Home() {
   return (
     <>
       <HeroSection />
       <main className="main-content">
-        {trekSections.map((section) => (
+        {uniqueTrekSections.map((section) => (
           <TrekSection key={section.id} section={section} />
         ))}
 

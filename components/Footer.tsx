@@ -41,7 +41,7 @@ export default function Footer() {
           <div className="footer-contact">
             <h4><Mail size={18} className="footer-icon" aria-hidden /> Mail/Write Us</h4>
             <p>
-              <a href="mailto:info@trekkersheaven.com">info@trekkersheaven.com</a>
+              <a href="mailto:trekkersheaven@zohomail.in">trekkersheaven@zohomail.in</a>
             </p>
           </div>
           <div className="footer-contact">
@@ -75,7 +75,7 @@ export default function Footer() {
               <Facebook size={20} />
               Facebook
             </a>
-            <a href="#" aria-label="Instagram">
+            <a href="https://www.instagram.com/trekkers.heaven" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <Instagram size={20} />
               Instagram
             </a>

@@ -56,8 +56,8 @@ export default function ContactPage() {
                 <div className="contact-card">
                   <h3><Mail size={20} className="contact-card-icon" aria-hidden /> Email Us</h3>
                   <p>
-                    <a href="mailto:info@trekkersheaven.com">
-                      info@trekkersheaven.com
+                    <a href="mailto:trekkersheaven@zohomail.in">
+                      trekkersheaven@zohomail.in
                     </a>
                   </p>
                 </div>
