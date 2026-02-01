@@ -59,8 +59,8 @@ export default function AboutPage() {
             </div>
             <div className="about-image-block">
               <Image
-                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80"
-                alt="Himalayan peaks"
+                src="/props/adventure-photo.jpg"
+                alt="Himalayan trekking adventure"
                 width={500}
                 height={350}
                 className="about-image"

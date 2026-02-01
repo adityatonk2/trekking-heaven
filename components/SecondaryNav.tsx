@@ -98,6 +98,15 @@ export default function SecondaryNav() {
   return (
     <nav className="secondary-nav">
       <div className="secondary-nav-inner">
+        <Link href="/" className="secondary-nav-logo" aria-label="Trekkers Heaven - Explore the Unknown">
+          <Image
+            src="/secondary-logo.png"
+            alt="Trekkers Heaven - Explore the Unknown"
+            width={220}
+            height={140}
+            className="secondary-nav-logo-img"
+          />
+        </Link>
         <div className="secondary-nav-container">
           {secondaryNavItems.map((item, idx) => (
           <Link
@@ -105,16 +114,20 @@ export default function SecondaryNav() {
             href={item.href}
             className={`secondary-nav-item ${activeIdx >= 0 && activeIdx === idx ? 'active' : ''}`}
             onClick={(e) => handleClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, item.href, idx)}
+            aria-label={item.label}
+            title={item.label}
           >
-            <Image
-              src={iconPaths[item.icon]}
-              alt={item.label}
-              width={48}
-              height={48}
-              className="secondary-icon-img"
-              sizes="(max-width: 768px) 32px, 48px"
-            />
-            <span className="secondary-nav-label">{item.label}</span>
+            <span className="secondary-nav-icon-wrap">
+              <Image
+                src={iconPaths[item.icon]}
+                alt=""
+                width={48}
+                height={48}
+                className="secondary-icon-img"
+                sizes="(max-width: 480px) 28px, (max-width: 768px) 32px, 48px"
+              />
+            </span>
+            <span className="secondary-nav-label" aria-hidden="true">{item.label}</span>
           </Link>
           ))}
         </div>

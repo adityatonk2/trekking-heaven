@@ -87,6 +87,30 @@ export default function CustomizePage() {
 
       <section className="customize-section">
         <div className="customize-container">
+          <div className="customize-props-row">
+            <div className="customize-prop">
+              <Image
+                src="/props/traveler-bag-map.gif"
+                alt="Traveler with backpack and map"
+                width={280}
+                height={200}
+                unoptimized
+                className="customize-prop-img"
+              />
+              <p className="customize-prop-caption">Plan your adventure</p>
+            </div>
+            <div className="customize-prop">
+              <Image
+                src="/props/tourist-map-navigation.gif"
+                alt="Adventure navigation and exploration"
+                width={280}
+                height={200}
+                unoptimized
+                className="customize-prop-img"
+              />
+              <p className="customize-prop-caption">Find your way</p>
+            </div>
+          </div>
           <h2 className="customize-form-title">Customize Your Trek</h2>
           <p className="customize-intro">
             Customizing the trek works well for families, students, company

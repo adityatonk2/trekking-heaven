@@ -15,8 +15,9 @@ export default function TrekCard({ trek }: TrekCardProps) {
           src={trek.image}
           alt={trek.name}
           width={448}
-          height={280}
+          height={336}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="trek-card-img"
         />
       </div>
       <div className="trek-card-content">

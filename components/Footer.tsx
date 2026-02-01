@@ -12,11 +12,20 @@ export default function Footer() {
           <div className="footer-brand">
             <Link href="/" className="logo">
               <Image
-                src="/our-logo.png"
+                src="/new-logo.png"
                 alt="Trekkers Heaven"
                 width={180}
                 height={40}
                 className="logo-img logo-img-footer"
+              />
+            </Link>
+            <Link href="/" className="logo logo-secondary-link" aria-label="Trekkers Heaven - Explore the Unknown">
+              <Image
+                src="/secondary-logo.png"
+                alt="Trekkers Heaven - Explore the Unknown"
+                width={240}
+                height={154}
+                className="secondary-logo-img"
               />
             </Link>
             <p>

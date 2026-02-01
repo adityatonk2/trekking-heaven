@@ -18,7 +18,7 @@ export default function Header() {
       <div className="nav-container">
         <Link href="/" className="logo">
           <Image
-            src="/our-logo.png"
+            src="/new-logo.png"
             alt="Trekkers Heaven"
             width={220}
             height={52}
@@ -55,6 +55,9 @@ export default function Header() {
               </Link>
             </div>
           </div>
+          <Link href="/trekking-packages" className="nav-link">
+            Trekking Packages
+          </Link>
           <Link href="/about" className="nav-link">
             About Us
           </Link>

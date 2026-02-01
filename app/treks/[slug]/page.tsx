@@ -17,12 +17,14 @@ import {
   Snowflake,
   MessageCircle,
   Package,
+  Download,
 } from 'lucide-react';
 import {
   getTrekDetailBySlug,
   getAllTrekSlugs,
 } from '@/lib/trek-detail-data';
 import { WHATSAPP_URL } from '@/lib/constants';
+import ReviewsSection from '@/components/ReviewsSection';
 
 interface TrekDetailPageProps {
   params: Promise<{ slug: string }>;
@@ -251,9 +253,23 @@ export default async function TrekDetailPage({ params }: TrekDetailPageProps) {
                   Get Package
                 </Link>
               </div>
+
+              {trek.pdfUrl && (
+                <a
+                  href={trek.pdfUrl}
+                  download
+                  className="btn btn-secondary trek-detail-btn-pdf"
+                  style={{ marginTop: 'var(--space-md)', width: '100%' }}
+                >
+                  <Download size={20} />
+                  Download Trek PDF
+                </a>
+              )}
             </div>
           </aside>
         </div>
+
+        <ReviewsSection />
       </div>
     </main>
   );
