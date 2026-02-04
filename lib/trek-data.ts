@@ -129,6 +129,7 @@ export const trekSections: TrekSection[] = [
     treks: [
       { id: '22', slug: 'black-peak-kalanag', name: 'Black Peak Kalanag', origin: 'Ex Dehradun to Dehradun', days: 16, difficulty: 'Difficult', image: '/treks-cards-images/black-pearl-kalang.png' },
       { id: '23', slug: 'friendship-peak-expedition', name: 'Friendship Peak Expedition', origin: 'Ex Manali to Manali', days: 7, difficulty: 'Difficult', image: '/treks-cards-images/friendship-peak-expedition.png' },
+      { id: '23b', slug: 'badasu-pass-trek', name: 'Badasu Pass Trek', origin: 'Ex Sankri', days: 8, difficulty: 'Difficult', image: '/latest-treks/badasu-pass-trek.png' },
     ],
   },
   {
@@ -141,6 +142,18 @@ export const trekSections: TrekSection[] = [
       { id: '31', slug: 'leh-ladakh-bike-expedition', name: 'Leh-Ladakh Bike Expedition', origin: 'Ex Leh', days: 12, difficulty: 'Difficult', image: '/treks-cards-images/Leh-Ladakh-Bike-Expedition.png' },
       { id: '32', slug: 'spiti-valley-bike-tour', name: 'Spiti Valley Bike Tour', origin: 'Ex Manali', days: 8, difficulty: 'Moderate', image: '/treks-cards-images/Spiti-Valley-Bike-Tour.png' },
       { id: '33', slug: 'manali-to-leh-bike-ride', name: 'Manali to Leh Bike Ride', origin: 'Ex Manali', days: 10, difficulty: 'Difficult', image: '/treks-cards-images/Leh-Bike-Ride.png' },
+    ],
+  },
+  {
+    id: 'spiritual-yatra',
+    title: 'Pilgrimage & Spiritual Yatras',
+    intro: [
+      'Embark on a divine journey to the holiest shrines in the Himalayas. Experience spiritual bliss, ancient temples, and breathtaking landscapes with our guided Yatra packages.',
+    ],
+    treks: [
+      { id: '40', slug: 'char-dham-yatra', name: 'Char Dham Yatra', origin: 'Ex Haridwar/Rishikesh', days: 10, difficulty: 'Moderate', image: '/latest-treks/char-dham.png' },
+      { id: '41', slug: 'gangotri-yamunotri-yatra', name: 'Gangotri & Yamunotri Yatra', origin: 'Ex Haridwar/Rishikesh', days: 5, difficulty: 'Moderate', image: '/latest-treks/gangotri-yamnotri-trek.png' },
+      { id: '42', slug: 'kedarnath-badrinath-yatra', name: 'Kedarnath & Badrinath Yatra', origin: 'Ex Haridwar/Rishikesh', days: 6, difficulty: 'Moderate', image: '/latest-treks/kedarnath-badrinath.png' },
     ],
   },
   {
@@ -158,6 +171,17 @@ export const trekSections: TrekSection[] = [
     ],
   },
 ];
+
+/** All unique treks across sections (by slug), for search */
+export function getAllTreks(): Trek[] {
+  const bySlug = new Map<string, Trek>();
+  trekSections.forEach((section) => {
+    section.treks.forEach((trek) => {
+      if (!bySlug.has(trek.slug)) bySlug.set(trek.slug, trek);
+    });
+  });
+  return Array.from(bySlug.values());
+}
 
 export const secondaryNavItems = [
   { href: '/treks', label: 'Trek', icon: 'trek' },

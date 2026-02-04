@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { MapPin, Mail, Phone, Facebook, Instagram, Youtube } from 'lucide-react';
-import { TEL_URL, WHATSAPP_DISPLAY } from '@/lib/constants';
+import { MapPin, Mail, Phone, Facebook, Instagram, Youtube, AtSign } from 'lucide-react';
+import { TEL_PRIMARY_URL, TEL_SECONDARY_URL, PRIMARY_DISPLAY, SECONDARY_DISPLAY, OFFICE_ADDRESS_FULL } from '@/lib/constants';
 
 export default function Footer() {
   return (
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
           <div className="footer-contact">
             <h4><MapPin size={18} className="footer-icon" aria-hidden /> Visit Us</h4>
-            <p>Narayan Vihar, Kargi Road, Dehradun, Uttarakhand 248001</p>
+            <p>{OFFICE_ADDRESS_FULL}</p>
           </div>
           <div className="footer-contact">
             <h4><Mail size={18} className="footer-icon" aria-hidden /> Mail/Write Us</h4>
@@ -47,7 +47,9 @@ export default function Footer() {
           <div className="footer-contact">
             <h4><Phone size={18} className="footer-icon" aria-hidden /> Call Us</h4>
             <p>
-              <a href={TEL_URL}>{WHATSAPP_DISPLAY}</a>
+              <a href={TEL_PRIMARY_URL}>{PRIMARY_DISPLAY}</a>
+              {', '}
+              <a href={TEL_SECONDARY_URL}>{SECONDARY_DISPLAY}</a>
             </p>
           </div>
           <div className="footer-badges">
@@ -71,7 +73,7 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <div className="footer-social">
-            <a href="#" aria-label="Facebook">
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
               <Facebook size={20} />
               Facebook
             </a>
@@ -79,7 +81,11 @@ export default function Footer() {
               <Instagram size={20} />
               Instagram
             </a>
-            <a href="#" aria-label="YouTube">
+            <a href="https://www.threads.net/@trekkers.heaven?igshid=NTc4MTIwNjQ2YQ==" target="_blank" rel="noopener noreferrer" aria-label="Threads">
+              <AtSign size={20} />
+              Threads
+            </a>
+            <a href="https://youtube.com/@trekkersheaven?si=ZVCQkEIXa049PrTY" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
               <Youtube size={20} />
               YouTube
             </a>

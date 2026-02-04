@@ -3,19 +3,28 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import TrekSearch from './TrekSearch';
 
 const ChevronDown = () => (
-  <svg width="10" height="6" viewBox="0 0 10 6" fill="none">
+  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden>
     <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" />
   </svg>
 );
 
 export default function Header() {
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [treksOpen, setTreksOpen] = useState(false);
   const [policiesOpen, setPoliciesOpen] = useState(false);
   const treksRef = useRef<HTMLDivElement>(null);
   const policiesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMenuOpen(false);
+    setTreksOpen(false);
+    setPoliciesOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -44,6 +53,7 @@ export default function Header() {
             priority
           />
         </Link>
+        <TrekSearch />
         <nav className={`nav-links ${menuOpen ? 'is-open' : ''}`}>
           <Link href="/" className="nav-link">
             Home

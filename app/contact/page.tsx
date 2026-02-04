@@ -2,7 +2,15 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
-import { WHATSAPP_URL, TEL_URL, WHATSAPP_DISPLAY } from '@/lib/constants';
+import OfficeLocation from '@/components/OfficeLocation';
+import {
+  WHATSAPP_URL,
+  TEL_PRIMARY_URL,
+  TEL_SECONDARY_URL,
+  PRIMARY_DISPLAY,
+  SECONDARY_DISPLAY,
+  OFFICE_ADDRESS,
+} from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Trekkers Heaven — Himalayan Trekking Experts',
@@ -44,13 +52,15 @@ export default function ContactPage() {
               <div className="contact-cards">
                 <div className="contact-card">
                   <h3><MapPin size={20} className="contact-card-icon" aria-hidden /> Visit Us</h3>
-                  <p>Narayan Vihar, Kargi Road</p>
-                  <p>Dehradun, Uttarakhand 248001</p>
+                  <p>{OFFICE_ADDRESS.line1}</p>
+                  <p>{OFFICE_ADDRESS.city}, {OFFICE_ADDRESS.state} {OFFICE_ADDRESS.pin}</p>
                 </div>
                 <div className="contact-card">
                   <h3><Phone size={20} className="contact-card-icon" aria-hidden /> Call Us</h3>
                   <p>
-                    <a href={TEL_URL}>{WHATSAPP_DISPLAY}</a>
+                    <a href={TEL_PRIMARY_URL}>{PRIMARY_DISPLAY}</a>
+                    {', '}
+                    <a href={TEL_SECONDARY_URL}>{SECONDARY_DISPLAY}</a>
                   </p>
                 </div>
                 <div className="contact-card">
@@ -73,7 +83,7 @@ export default function ContactPage() {
                   <MessageCircle size={20} />
                   WhatsApp
                 </a>
-                <a href={TEL_URL} className="btn btn-primary">
+                <a href={TEL_PRIMARY_URL} className="btn btn-primary">
                   <Phone size={20} />
                   Call Now
                 </a>
@@ -145,6 +155,8 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <OfficeLocation />
 
       <section className="contact-cta">
         <div className="contact-container">

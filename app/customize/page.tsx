@@ -15,13 +15,34 @@ const SERVICE_TYPES = [
   'Custom Package',
 ];
 
-function buildWhatsAppMessage(data: Record<string, string>): string {
+interface FormData {
+  name: string;
+  contact: string;
+  email: string;
+  startDate: string;
+  endDate: string;
+  duration: string;
+  location: string;
+  participants: string;
+  ageGroup: string;
+  budget: string;
+  serviceType: string;
+  extra: string;
+}
+
+function buildWhatsAppMessage(data: FormData): string {
+  // Format dates if available
+  const dateRange = (data.startDate || data.endDate)
+    ? `${data.startDate || '?'} to ${data.endDate || '?'}`
+    : '—';
+
   const lines = [
     '*Customize Trek Request*',
     '',
     `Name: ${data.name || '—'}`,
     `Contact: ${data.contact || '—'}`,
     `Email: ${data.email || '—'}`,
+    `Preferred Dates: ${dateRange}`,
     `Duration: ${data.duration || '—'}`,
     `Location: ${data.location || '—'}`,
     `Participants: ${data.participants || '—'}`,
@@ -36,10 +57,12 @@ function buildWhatsAppMessage(data: Record<string, string>): string {
 }
 
 export default function CustomizePage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     contact: '',
     email: '',
+    startDate: '',
+    endDate: '',
     duration: '',
     location: '',
     participants: '',
@@ -193,6 +216,36 @@ export default function CustomizePage() {
                     onChange={handleChange}
                   />
                 </div>
+
+                {/* Replaced 'dates' text input with Date Pickers */}
+                <div className="form-group">
+                  <label>Preferred Dates</label>
+                  <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <div style={{ flex: 1 }}>
+                      <label htmlFor="startDate" style={{ fontSize: '0.75rem', color: '#666', marginBottom: '0.2rem', display: 'block' }}>Start Date</label>
+                      <input
+                        type="date"
+                        id="startDate"
+                        name="startDate"
+                        value={formData.startDate}
+                        onChange={handleChange}
+                        style={{ width: '100%' }} // Ensure full width within flex item
+                      />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <label htmlFor="endDate" style={{ fontSize: '0.75rem', color: '#666', marginBottom: '0.2rem', display: 'block' }}>End Date</label>
+                      <input
+                        type="date"
+                        id="endDate"
+                        name="endDate"
+                        value={formData.endDate}
+                        onChange={handleChange}
+                        style={{ width: '100%' }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 <div className="form-group">
                   <label htmlFor="location">Preferable location</label>
                   <input
@@ -237,7 +290,7 @@ export default function CustomizePage() {
                     id="extra"
                     name="extra"
                     rows={3}
-                    placeholder="Optional — dates, special requests, etc."
+                    placeholder="Optional — special requests, etc."
                     value={formData.extra}
                     onChange={handleChange}
                   />

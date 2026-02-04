@@ -10,7 +10,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
-  variable: '--font-plus-jakarta',
+  variable: '--font-dm-sans',
 });
 
 export const metadata: Metadata = {
