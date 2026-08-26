@@ -3,6 +3,7 @@
 import { useState, FormEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { AlertCircle, CheckCircle2 } from 'lucide-react';
 
 import { WHATSAPP_NUMBER } from '@/lib/constants';
 
@@ -28,7 +29,10 @@ interface FormData {
   budget: string;
   serviceType: string;
   extra: string;
+  company: string; // honeypot
 }
+
+type SubmitStatus = 'idle' | 'submitting' | 'submitted' | 'error';
 
 function buildWhatsAppMessage(data: FormData): string {
   // Format dates if available
@@ -70,7 +74,10 @@ export default function CustomizePage() {
     budget: '',
     serviceType: '',
     extra: '',
+    company: '',
   });
+  const [status, setStatus] = useState<SubmitStatus>('idle');
+  const [error, setError] = useState('');
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
@@ -79,8 +86,53 @@ export default function CustomizePage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (status === 'submitting') return;
+
+    if (formData.name.trim().length < 2) {
+      setError('Please enter your name.');
+      setStatus('error');
+      return;
+    }
+    if (!formData.contact.trim() && !formData.email.trim()) {
+      setError('Please provide a contact number or email so we can reach you.');
+      setStatus('error');
+      return;
+    }
+
+    setStatus('submitting');
+    setError('');
+
+    try {
+      await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'customize',
+          name: formData.name,
+          email: formData.email,
+          phone: formData.contact,
+          company: formData.company,
+          tripRequirements: {
+            startDate: formData.startDate,
+            endDate: formData.endDate,
+            duration: formData.duration,
+            location: formData.location,
+            participants: formData.participants,
+            ageGroup: formData.ageGroup,
+            budget: formData.budget,
+            serviceType: formData.serviceType,
+            extra: formData.extra,
+          },
+        }),
+      });
+    } catch {
+      // Lead storage is best-effort — the WhatsApp handoff below is the
+      // primary conversion path and should still work if this fails.
+    }
+
+    setStatus('submitted');
     const message = buildWhatsAppMessage(formData);
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -144,7 +196,20 @@ export default function CustomizePage() {
             plan something that fits.
           </p>
 
-          <form className="customize-form" onSubmit={handleSubmit}>
+          <form className="customize-form" onSubmit={handleSubmit} noValidate>
+            {/* Honeypot field — hidden from real users, catches simple bots */}
+            <div className="sr-only" aria-hidden="true">
+              <label htmlFor="customize-company">Company</label>
+              <input
+                type="text"
+                id="customize-company"
+                name="company"
+                tabIndex={-1}
+                autoComplete="off"
+                value={formData.company}
+                onChange={handleChange}
+              />
+            </div>
             <div className="customize-form-grid">
               <div className="customize-form-col">
                 <div className="form-group">
@@ -153,6 +218,8 @@ export default function CustomizePage() {
                     type="text"
                     id="name"
                     name="name"
+                    required
+                    minLength={2}
                     placeholder="Enter name"
                     value={formData.name}
                     onChange={handleChange}
@@ -220,8 +287,8 @@ export default function CustomizePage() {
                 {/* Replaced 'dates' text input with Date Pickers */}
                 <div className="form-group">
                   <label>Preferred Dates</label>
-                  <div style={{ display: 'flex', gap: '0.5rem' }}>
-                    <div style={{ flex: 1 }}>
+                  <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                    <div style={{ flex: '1 1 120px', minWidth: 0 }}>
                       <label htmlFor="startDate" style={{ fontSize: '0.75rem', color: '#666', marginBottom: '0.2rem', display: 'block' }}>Start Date</label>
                       <input
                         type="date"
@@ -232,7 +299,7 @@ export default function CustomizePage() {
                         style={{ width: '100%' }} // Ensure full width within flex item
                       />
                     </div>
-                    <div style={{ flex: 1 }}>
+                    <div style={{ flex: '1 1 120px', minWidth: 0 }}>
                       <label htmlFor="endDate" style={{ fontSize: '0.75rem', color: '#666', marginBottom: '0.2rem', display: 'block' }}>End Date</label>
                       <input
                         type="date"
@@ -299,8 +366,22 @@ export default function CustomizePage() {
             </div>
 
             <div className="customize-form-actions">
-              <button type="submit" className="btn btn-primary btn-send">
-                Send via WhatsApp
+              {status === 'error' && error && (
+                <p className="contact-form-error" role="alert">
+                  <AlertCircle size={16} aria-hidden /> {error}
+                </p>
+              )}
+              {status === 'submitted' && (
+                <p className="customize-form-success" role="status">
+                  <CheckCircle2 size={16} aria-hidden /> Request saved — continue on WhatsApp to confirm.
+                </p>
+              )}
+              <button
+                type="submit"
+                className="btn btn-primary btn-send"
+                disabled={status === 'submitting'}
+              >
+                {status === 'submitting' ? 'Sending…' : 'Send via WhatsApp'}
               </button>
               <p className="customize-form-hint">
                 You&apos;ll be taken to WhatsApp with your details pre-filled.

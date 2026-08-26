@@ -2,26 +2,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 import HeroSection from '@/components/HeroSection';
 import TrekSection from '@/components/TrekSection';
+import TrekCarousel from '@/components/TrekCarousel';
 import ReviewsSection from '@/components/ReviewsSection';
 import OfficeLocation from '@/components/OfficeLocation';
 import SectionBlock from '@/components/SectionBlock';
-import { trekSections, type TrekSection as TrekSectionType } from '@/lib/trek-data';
+import { getHomepageTrekSections } from '@/lib/trek-data';
 
-function deduplicateTrekSections(sections: TrekSectionType[]): TrekSectionType[] {
-  const seenSlugs = new Set<string>();
-  return sections
-    .map((section) => ({
-      ...section,
-      treks: section.treks.filter((trek) => {
-        if (seenSlugs.has(trek.slug)) return false;
-        seenSlugs.add(trek.slug);
-        return true;
-      }),
-    }))
-    .filter((section) => section.treks.length > 0);
-}
-
-const uniqueTrekSections = deduplicateTrekSections(trekSections);
+const uniqueTrekSections = getHomepageTrekSections();
 
 export default function Home() {
   return (
@@ -31,6 +18,8 @@ export default function Home() {
         {uniqueTrekSections.map((section) => (
           <TrekSection key={section.id} section={section} />
         ))}
+
+        <TrekCarousel />
 
         <section id="reviews" className="trek-section">
           <ReviewsSection />

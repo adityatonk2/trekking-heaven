@@ -65,6 +65,7 @@ export default function TrekSearch() {
           }}
           className="trek-search-input"
           autoComplete="off"
+          role="combobox"
           aria-expanded={showDropdown}
           aria-autocomplete="list"
           aria-controls="trek-search-results"
@@ -80,7 +81,7 @@ export default function TrekSearch() {
             <li className="trek-search-empty">No treks found</li>
           ) : (
             results.slice(0, MAX_RESULTS).map((trek) => (
-              <li key={trek.slug} role="option">
+              <li key={trek.slug} role="option" aria-selected={false}>
                 <Link
                   href={`/treks/${trek.slug}`}
                   className="trek-search-result"

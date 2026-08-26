@@ -20,7 +20,7 @@ export const coreExpeditions: ExpeditionPackage[] = [
     highlights: ['Tungnath temple', 'Deoriatal Lake', 'Chaukhamba views'],
     slug: 'chopta-tungnath-trek',
     image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
-    pdfUrl: '/trek-pdfs/chopta-tungnath.pdf',
+    pdfUrl: 'https://drive.google.com/file/d/15IqF1CC-PL46A_-x5wEEXwkqsMe8fe4k/view?usp=sharing',
   },
   {
     id: 'hampta-chandrataal',
@@ -31,7 +31,7 @@ export const coreExpeditions: ExpeditionPackage[] = [
     highlights: ['Manali to Lahaul transition', 'Chandrataal Lake'],
     slug: 'hampta-pass-trek',
     image: 'https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=600&q=80',
-    pdfUrl: '/trek-pdfs/hampta-pass.pdf',
+    pdfUrl: 'https://drive.google.com/file/d/1Nqj3q6u2Sa4gx2Qgg6eQRvLhfDa9qo_H/view?usp=sharing',
   },
   {
     id: 'kedarkantha',
@@ -42,7 +42,7 @@ export const coreExpeditions: ExpeditionPackage[] = [
     highlights: ['Sankri base', 'Summit sunrise', 'Swargarohini and Bandarpoonch'],
     slug: 'kedarkantha-trek',
     image: 'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=600&q=80',
-    pdfUrl: '/trek-pdfs/kedarkantha.pdf',
+    pdfUrl: 'https://drive.google.com/file/d/1DU2KCN7aBrxzLZnCwD5SJlhmjxU39IcE/view?usp=sharing',
   },
   {
     id: 'kuari-pass',
@@ -53,7 +53,7 @@ export const coreExpeditions: ExpeditionPackage[] = [
     highlights: ['360 degree views of Nanda Devi', 'Trishul', 'Chaukhamba'],
     slug: 'kuari-pass-trek',
     image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80',
-    pdfUrl: '/trek-pdfs/kuari-pass.pdf',
+    pdfUrl: 'https://drive.google.com/file/d/1s_ol0yVpZvEt5t4Kze0_L6_46fcYn7b5/view?usp=sharing',
   },
 ];
 

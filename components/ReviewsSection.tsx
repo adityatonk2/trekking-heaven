@@ -11,7 +11,7 @@ export default function ReviewsSection({ data }: ReviewsSectionProps) {
   const maxCount = Math.max(...reviews.distribution.map((d) => d.count), 1);
 
   return (
-    <section id="reviews" className="reviews-section">
+    <section className="reviews-section">
       <h2 className="reviews-title">Reviews</h2>
 
       <div className="reviews-summary">

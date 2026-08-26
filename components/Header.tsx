@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import TrekSearch from './TrekSearch';
+import ThemeToggle from './ThemeToggle';
 
 const ChevronDown = () => (
   <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden>
@@ -147,6 +148,7 @@ export default function Header() {
             Contact Us
           </Link>
         </nav>
+        <ThemeToggle />
         <button
           type="button"
           className={`mobile-menu-btn ${menuOpen ? 'is-active' : ''}`}

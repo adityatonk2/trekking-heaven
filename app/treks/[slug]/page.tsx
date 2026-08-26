@@ -33,9 +33,12 @@ import {
   getTrekDetailBySlug,
   getAllTrekSlugs,
 } from '@/lib/trek-detail-data';
-import { WHATSAPP_URL, PRIMARY_DISPLAY } from '@/lib/constants';
+import { WHATSAPP_URL, PRIMARY_DISPLAY, TEL_PRIMARY_URL } from '@/lib/constants';
+import { SITE_URL } from '@/lib/site';
+import { defaultReviewsData } from '@/lib/reviews-data';
 import ReviewsSection from '@/components/ReviewsSection';
 import TrekItinerary from '@/components/TrekItinerary';
+import TrekGallery from '@/components/TrekGallery';
 import RentalGear from '@/components/RentalGear';
 import ClientStories from '@/components/ClientStories';
 
@@ -72,14 +75,62 @@ export default async function TrekDetailPage({ params }: TrekDetailPageProps) {
 
   const gallery = trek.gallery ?? [trek.image];
   const mainImage = gallery[0];
+  const hasGallery = gallery.length > 1;
 
   const whatsappMessage = encodeURIComponent(
     `Hi, I'm interested in *${trek.name}* (${trek.days} days). Please share details and dates.`
   );
   const whatsappLink = `${WHATSAPP_URL}?text=${whatsappMessage}`;
 
+  const priceDigits = trek.pricePerPerson?.replace(/[^0-9]/g, '');
+  const numericPrice = priceDigits ? Number(priceDigits) : undefined;
+
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: trek.name,
+    description: `${trek.name} — ${trek.days} days, ${trek.difficulty}. ${trek.origin}.`,
+    image: gallery.map((src) => `${SITE_URL}${src}`),
+    ...(numericPrice
+      ? {
+          offers: {
+            '@type': 'Offer',
+            price: numericPrice,
+            priceCurrency: 'INR',
+            availability: 'https://schema.org/InStock',
+            url: `${SITE_URL}/treks/${trek.slug}`,
+          },
+        }
+      : {}),
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: defaultReviewsData.averageRating,
+      reviewCount: defaultReviewsData.totalRatings,
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Treks', item: `${SITE_URL}/treks` },
+      { '@type': 'ListItem', position: 3, name: trek.name, item: `${SITE_URL}/treks/${trek.slug}` },
+    ],
+  };
+
   return (
     <main className="trek-detail-page-new">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero Section with Image Gallery */}
       <section className="trek-hero-new">
         <div className="trek-hero-image-main">
@@ -116,10 +167,12 @@ export default async function TrekDetailPage({ params }: TrekDetailPageProps) {
 
               {/* Quick Action Buttons */}
               <div className="trek-hero-actions">
-                <a href="#gallery" className="btn-icon-new">
-                  <Camera size={20} />
-                  Gallery
-                </a>
+                {hasGallery && (
+                  <a href="#gallery" className="btn-icon-new">
+                    <Camera size={20} />
+                    Gallery
+                  </a>
+                )}
                 <a href={whatsappLink} target="_blank" rel="noopener" className="btn-primary-new">
                   <MessageCircle size={20} />
                   Book Now
@@ -166,7 +219,16 @@ export default async function TrekDetailPage({ params }: TrekDetailPageProps) {
       <nav className="trek-nav-sticky">
         <div className="container-new">
           <div className="trek-nav-links-new">
-            {['Overview', 'Itinerary', 'Pricing', 'How to Reach', 'Rental Gears', 'Client Moments', 'Reviews'].map((item) => (
+            {[
+              'Overview',
+              ...(hasGallery ? ['Gallery'] : []),
+              'Itinerary',
+              'Pricing',
+              'How to Reach',
+              'Rental Gears',
+              'Client Moments',
+              'Reviews',
+            ].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase().replace(/ /g, '-')}`}
@@ -303,6 +365,17 @@ export default async function TrekDetailPage({ params }: TrekDetailPageProps) {
               )}
             </section>
 
+            {/* Gallery Section */}
+            {hasGallery && (
+              <section id="gallery" className="content-section-new">
+                <h2 className="section-title-new">
+                  <Camera size={28} />
+                  Photo Gallery
+                </h2>
+                <TrekGallery images={gallery} trekName={trek.name} />
+              </section>
+            )}
+
             {/* Itinerary Section */}
             <section id="itinerary" className="content-section-new">
               <h2 className="section-title-new">
@@ -310,17 +383,15 @@ export default async function TrekDetailPage({ params }: TrekDetailPageProps) {
                 Day-by-Day Itinerary
               </h2>
               {trek.itinerary ? (
-                <>
-                  <TrekItinerary itinerary={trek.itinerary} />
-                  {trek.pdfUrl && (
-                    <a href={trek.pdfUrl} download className="btn-download-new">
-                      <Download size={20} />
-                      Download Detailed Itinerary PDF
-                    </a>
-                  )}
-                </>
+                <TrekItinerary itinerary={trek.itinerary} />
               ) : (
                 <div className="no-data-new">Itinerary details coming soon...</div>
+              )}
+              {trek.pdfUrl && (
+                <a href={trek.pdfUrl} target="_blank" rel="noopener noreferrer" className="btn-download-new">
+                  <Download size={20} />
+                  Download Detailed Itinerary PDF
+                </a>
               )}
             </section>
 
@@ -463,7 +534,7 @@ export default async function TrekDetailPage({ params }: TrekDetailPageProps) {
                   Our trek experts are here to help you plan your adventure.
                 </p>
                 <div className="contact-links-new">
-                  <a href={`tel:${PRIMARY_DISPLAY}`} className="contact-link-new">
+                  <a href={TEL_PRIMARY_URL} className="contact-link-new">
                     <Phone size={18} />
                     <span>{PRIMARY_DISPLAY}</span>
                   </a>

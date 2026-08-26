@@ -192,6 +192,7 @@ export default function TrekItinerary({ itinerary }: TrekItineraryProps) {
 
         .itinerary-title {
           flex: 1;
+          min-width: 0;
           font-size: 1rem;
           font-weight: 600;
           color: var(--color-text);

@@ -23,7 +23,7 @@ export const videos: Video[] = [
     duration: '5:42',
   },
   {
-    slug: 'Kedarkantha Trek: ',
+    slug: 'kedarkantha-winter-wonderland',
     title: 'A Winter Wonderland in the Himalayas',
     description:
       'Documentary-style journey through the Har Ki Dun valley. Ancient villages, alpine meadows, and the legend of the Pandavas.',

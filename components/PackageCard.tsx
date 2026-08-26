@@ -58,7 +58,8 @@ export default function PackageCard({ package: pkg }: PackageCardProps) {
           {pkg.pdfUrl && (
             <a
               href={pkg.pdfUrl}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn btn-secondary package-btn-pdf"
               title="Download Trek PDF"
             >

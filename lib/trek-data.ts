@@ -157,6 +157,19 @@ export const trekSections: TrekSection[] = [
     ],
   },
   {
+    id: 'weekend-getaways',
+    title: 'Weekend Getaways',
+    intro: [
+      'Short on time but craving the mountains (or a lake city break)? These handpicked weekend getaways are perfect for a quick refresh — easy on the schedule, big on the views.',
+    ],
+    treks: [
+      { id: '43', slug: 'harshil-valley-trek', name: 'Harshil Valley Trek', origin: 'Ex Dehradun', days: 4, difficulty: 'Easy', image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80' },
+      { id: '44', slug: 'kanchi-dham-nainital-tour', name: 'Kanchi Dham & Nainital Tour', origin: 'Ex Kathgodam', days: 4, difficulty: 'Easy', image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80' },
+      { id: '45', slug: 'mcleod-ganj-triund-trek', name: 'McLeod Ganj & Triund Trek', origin: 'Ex Delhi to Delhi', days: 3, difficulty: 'Easy to Moderate', image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80' },
+      { id: '46', slug: 'udaipur-heritage-tour', name: 'Udaipur Heritage Tour', origin: 'Ex Udaipur', days: 4, difficulty: 'Easy', image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80' },
+    ],
+  },
+  {
     id: 'upcoming-treks',
     title: 'Upcoming Treks',
     intro: [
@@ -181,6 +194,27 @@ export function getAllTreks(): Trek[] {
     });
   });
   return Array.from(bySlug.values());
+}
+
+/**
+ * Trek sections with each trek kept only in the first section it appears in.
+ * A trek intentionally belongs to multiple category sections (e.g. a trek can
+ * be both a summer and monsoon pick) — `trekSections` preserves that for the
+ * /treks category listing. The homepage instead wants each trek card to show
+ * only once, so it renders this deduplicated view.
+ */
+export function getHomepageTrekSections(): TrekSection[] {
+  const seenSlugs = new Set<string>();
+  return trekSections
+    .map((section) => ({
+      ...section,
+      treks: section.treks.filter((trek) => {
+        if (seenSlugs.has(trek.slug)) return false;
+        seenSlugs.add(trek.slug);
+        return true;
+      }),
+    }))
+    .filter((section) => section.treks.length > 0);
 }
 
 export const secondaryNavItems = [

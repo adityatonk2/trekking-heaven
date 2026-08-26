@@ -6,6 +6,7 @@ import {
   getArticleBySlug,
   getAllArticleSlugs,
 } from '@/lib/article-data';
+import { SITE_URL, SITE_NAME } from '@/lib/site';
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>;
@@ -38,8 +39,25 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
   if (!article) notFound();
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.intro,
+    image: [`${SITE_URL}${article.image}`],
+    datePublished: article.publishedAt,
+    author: { '@type': 'Organization', name: SITE_NAME },
+    publisher: { '@type': 'Organization', name: SITE_NAME },
+    mainEntityOfPage: `${SITE_URL}/articles/${article.slug}`,
+  };
+
   return (
     <main className="article-single-page">
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       <article className="article-single">
         <div className="article-single-header">
           <Link href="/articles" className="article-back-link">

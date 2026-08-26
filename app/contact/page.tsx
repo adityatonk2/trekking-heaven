@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
 import OfficeLocation from '@/components/OfficeLocation';
+import ContactForm from '@/components/ContactForm';
 import {
   WHATSAPP_URL,
   TEL_PRIMARY_URL,
@@ -92,65 +93,7 @@ export default function ContactPage() {
 
             <div className="contact-form-wrapper">
               <h2>Send a Message</h2>
-              <form
-                className="contact-form"
-                action="#"
-                method="post"
-              >
-                <div className="form-group">
-                  <label htmlFor="name">Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    placeholder="Your name"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="phone">Phone</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    placeholder="+91 XXXXX XXXXX"
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="subject">Subject</label>
-                  <select id="subject" name="subject">
-                    <option value="trek-inquiry">Trek Inquiry</option>
-                    <option value="bike-tour">Bike Tour</option>
-                    <option value="village-tour">Village Tour</option>
-                    <option value="international">International Trek</option>
-                    <option value="custom">Custom Trip</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-                <div className="form-group">
-                  <label htmlFor="message">Message</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={5}
-                    required
-                    placeholder="Tell us about your trek plans, group size, preferred dates..."
-                  />
-                </div>
-                <button type="submit" className="btn btn-primary btn-full">
-                  Send Message
-                </button>
-              </form>
+              <ContactForm />
             </div>
           </div>
         </div>

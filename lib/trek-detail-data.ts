@@ -94,7 +94,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
     pricePerPerson: '₹ 5,499',
     priceNote: '(Extra 5.00% GST)',
     discountBadge: '25% OFF',
-    pdfUrl: '/trek-pdfs/kedarkantha.pdf',
+    pdfUrl: 'https://drive.google.com/file/d/1DU2KCN7aBrxzLZnCwD5SJlhmjxU39IcE/view?usp=sharing',
     servicePoints: [
       'Dehradun - Dehradun',
       'Trek starts from Sankri',
@@ -118,6 +118,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
     rentalGear: STANDARD_RENTAL_GEAR,
   },
   'har-ki-dun-trek': {
+    pdfUrl: 'https://drive.google.com/file/d/1vfDJbowvUIOCk7-62O0kd7VmXFLGFVJH/view?usp=drive_link',
     name: 'Har Ki Dun Trek',
     region: 'Uttarakhand | India',
     days: 7,
@@ -176,7 +177,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
     rentalGear: STANDARD_RENTAL_GEAR,
   },
   'chopta-tungnath-trek': {
-    pdfUrl: '/trek-pdfs/chopta-tungnath.pdf',
+    pdfUrl: 'https://drive.google.com/file/d/15IqF1CC-PL46A_-x5wEEXwkqsMe8fe4k/view?usp=sharing',
     itinerary: [
       { day: 1, title: 'Dehradun to Sari Village (Base Camp)', description: ['Drive: 7-8 hours'], altitude: '6,600 ft' },
       { day: 2, title: 'Sari to Deoriatal and back', description: ['Trek: 2-3 hours'], altitude: '7,800 ft' },
@@ -229,6 +230,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
       { day: 10, title: 'Rudraprayag to Haridwar', description: ['Tor end'], altitude: '300 m' },
     ],
     pricePerPerson: 'On Request',
+    pdfUrl: 'https://drive.google.com/file/d/1hbxm-2mnMuLm8tdmdUolEPHScrNWoeU9/view?usp=drive_link',
     gallery: ['/latest-treks/char-dham.png'],
   },
   'gangotri-yamunotri-yatra': {
@@ -266,13 +268,59 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
       { day: 6, title: 'Rudraprayag to Haridwar', description: ['Tour end'], altitude: '300 m' },
     ],
     pricePerPerson: 'On Request',
+    pdfUrl: 'https://drive.google.com/file/d/10cAKhi34oyKksMfwBx_yyeP8_nKZd1ry/view?usp=drive_link',
     gallery: ['/latest-treks/kedarnath-badrinath.png'],
   },
   'hampta-pass-trek': {
-    pdfUrl: '/trek-pdfs/hampta-pass.pdf',
+    pdfUrl: 'https://drive.google.com/file/d/1Nqj3q6u2Sa4gx2Qgg6eQRvLhfDa9qo_H/view?usp=sharing',
   },
   'kuari-pass-trek': {
-    pdfUrl: '/trek-pdfs/kuari-pass.pdf',
+    pdfUrl: 'https://drive.google.com/file/d/1s_ol0yVpZvEt5t4Kze0_L6_46fcYn7b5/view?usp=sharing',
+  },
+  'do-dham-yatra': {
+    pdfUrl: 'https://drive.google.com/file/d/1llHaB2SI4K3LXv0L_aLCXhybLyzEYW82/view?usp=sharing',
+  },
+  'ek-dham-kedarnath-yatra': {
+    pdfUrl: 'https://drive.google.com/file/d/1Z0ySGkzOaLktuFnSREWXGV8xbDx_hbcy/view?usp=sharing',
+  },
+  'spiti-valley-bike-tour': {
+    pdfUrl: 'https://drive.google.com/file/d/12awWz3ODjUjiySx2rW50igNnbrVP0D3Z/view?usp=sharing',
+  },
+  'harshil-valley-trek': {
+    name: 'Harshil Valley Trek',
+    region: 'Uttarakhand | India',
+    origin: 'Ex Dehradun',
+    days: 4,
+    difficulty: 'Easy',
+    pdfUrl: 'https://drive.google.com/file/d/18NNy4f6Jp_UvjJBPJPsIMK0NhsYz_X1E/view?usp=sharing',
+    gallery: ['https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80'],
+  },
+  'kanchi-dham-nainital-tour': {
+    name: 'Kanchi Dham & Nainital Tour',
+    region: 'Uttarakhand | India',
+    origin: 'Ex Kathgodam',
+    days: 4,
+    difficulty: 'Easy',
+    pdfUrl: 'https://drive.google.com/file/d/1myQxJfuiY9E7sZQVfQ8hKvSnQr5kJmnH/view?usp=sharing',
+    gallery: ['https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80'],
+  },
+  'mcleod-ganj-triund-trek': {
+    name: 'McLeod Ganj & Triund Trek',
+    region: 'Himachal Pradesh | India',
+    origin: 'Ex Delhi to Delhi',
+    days: 3,
+    difficulty: 'Easy to Moderate',
+    pdfUrl: 'https://drive.google.com/file/d/11OFTvNTB1KHM7MwqoP4-uYs_ckHdIRKS/view?usp=sharing',
+    gallery: ['https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80'],
+  },
+  'udaipur-heritage-tour': {
+    name: 'Udaipur Heritage Tour',
+    region: 'Rajasthan | India',
+    origin: 'Ex Udaipur',
+    days: 4,
+    difficulty: 'Easy',
+    pdfUrl: 'https://drive.google.com/file/d/113QmD4BSsb2hmfY0oXkR1RunHkClz8JO/view?usp=sharing',
+    gallery: ['https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80'],
   },
   'langtang-valley-trek': {
     gallery: [
@@ -301,6 +349,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
     bestSeason: 'July to September',
     pricePerPerson: '₹11,800',
     priceNote: '(Extra 5% GST)',
+    pdfUrl: 'https://drive.google.com/file/d/1FTOdd6QOQs7VfBDlEi91ksejn1ZsgLag/view?usp=sharing',
     servicePoints: [
       'Services from Rishikesh',
       'Pickup & Drop: Laxman Jhula, Rishikesh',
