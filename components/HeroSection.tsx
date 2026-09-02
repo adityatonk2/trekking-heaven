@@ -1,19 +1,10 @@
-import Image from 'next/image';
+import HeroCollage from './HeroCollage';
 
 export default function HeroSection() {
   return (
     <section className="hero-section">
       <div className="hero-overlay" />
-      <div className="hero-bg-wrapper">
-        <Image
-          src="/hero-img.png"
-          alt="Himalayan trekking adventure"
-          className="hero-bg"
-          fill
-          priority
-          sizes="100vw"
-        />
-      </div>
+      <HeroCollage />
       <div className="hero-content">
         <p className="hero-subtitle">Your gateway to the Himalayas</p>
         <h1 className="hero-title">Trekkers Heaven</h1>

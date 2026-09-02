@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import TrekSection from '@/components/TrekSection';
+import HeroCollage from '@/components/HeroCollage';
 import { trekSections } from '@/lib/trek-data';
 
 export const metadata: Metadata = {
@@ -21,14 +21,7 @@ export default function TreksPage() {
       {/* Hero Section */}
       <section className="treks-hero">
         <div className="treks-hero-overlay" />
-        <Image
-          src="/hero-img.png"
-          alt="Himalayan trekking adventure"
-          fill
-          priority
-          sizes="100vw"
-          className="treks-hero-img"
-        />
+        <HeroCollage />
         <div className="treks-hero-content">
           <h1 className="treks-hero-title">
             Explore the Himalayas with Expert-Led Treks

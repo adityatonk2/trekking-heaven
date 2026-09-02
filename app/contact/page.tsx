@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
 import OfficeLocation from '@/components/OfficeLocation';
 import ContactForm from '@/components/ContactForm';
+import HeroCollage from '@/components/HeroCollage';
 import {
   WHATSAPP_URL,
   TEL_PRIMARY_URL,
@@ -11,6 +11,8 @@ import {
   PRIMARY_DISPLAY,
   SECONDARY_DISPLAY,
   OFFICE_ADDRESS,
+  EMAIL_ADDRESS,
+  EMAIL_URL,
 } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -24,14 +26,7 @@ export default function ContactPage() {
     <main className="contact-page">
       <section className="contact-hero">
         <div className="contact-hero-overlay" />
-        <Image
-          src="/hero-img.png"
-          alt="Himalayan trekking"
-          fill
-          priority
-          sizes="100vw"
-          className="contact-hero-img"
-        />
+        <HeroCollage />
         <div className="contact-hero-content">
           <h1 className="contact-hero-title">Contact Us</h1>
           <p className="contact-hero-subtitle">
@@ -67,8 +62,8 @@ export default function ContactPage() {
                 <div className="contact-card">
                   <h3><Mail size={20} className="contact-card-icon" aria-hidden /> Email Us</h3>
                   <p>
-                    <a href="mailto:trekkersheaven@zohomail.in">
-                      trekkersheaven@zohomail.in
+                    <a href={EMAIL_URL}>
+                      {EMAIL_ADDRESS}
                     </a>
                   </p>
                 </div>

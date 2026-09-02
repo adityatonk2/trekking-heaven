@@ -14,6 +14,7 @@ import {
   AlertCircle,
 } from 'lucide-react';
 import PackageCard from '@/components/PackageCard';
+import HeroCollage from '@/components/HeroCollage';
 import {
   coreExpeditions,
   leisurePackage,
@@ -44,14 +45,7 @@ export default function TrekkingPackagesPage() {
       {/* Hero */}
       <section className="packages-hero">
         <div className="packages-hero-overlay" />
-        <Image
-          src="/hero-img.png"
-          alt="Himalayan trekking"
-          fill
-          priority
-          sizes="100vw"
-          className="packages-hero-img"
-        />
+        <HeroCollage />
         <div className="packages-hero-content">
           <h1 className="packages-hero-title">Trekking Packages</h1>
           <p className="packages-hero-subtitle">

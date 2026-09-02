@@ -33,7 +33,7 @@ import {
   getTrekDetailBySlug,
   getAllTrekSlugs,
 } from '@/lib/trek-detail-data';
-import { WHATSAPP_URL, PRIMARY_DISPLAY, TEL_PRIMARY_URL } from '@/lib/constants';
+import { WHATSAPP_URL, PRIMARY_DISPLAY, TEL_PRIMARY_URL, EMAIL_ADDRESS, EMAIL_URL } from '@/lib/constants';
 import { SITE_URL } from '@/lib/site';
 import { defaultReviewsData } from '@/lib/reviews-data';
 import ReviewsSection from '@/components/ReviewsSection';
@@ -538,9 +538,9 @@ export default async function TrekDetailPage({ params }: TrekDetailPageProps) {
                     <Phone size={18} />
                     <span>{PRIMARY_DISPLAY}</span>
                   </a>
-                  <a href="mailto:contact@trekkersheaven.com" className="contact-link-new">
+                  <a href={EMAIL_URL} className="contact-link-new">
                     <Mail size={18} />
-                    <span>contact@trekkersheaven.com</span>
+                    <span>{EMAIL_ADDRESS}</span>
                   </a>
                 </div>
               </div>

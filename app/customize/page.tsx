@@ -4,6 +4,7 @@ import { useState, FormEvent } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
+import HeroCollage from '@/components/HeroCollage';
 
 import { WHATSAPP_NUMBER } from '@/lib/constants';
 
@@ -142,14 +143,7 @@ export default function CustomizePage() {
     <main className="customize-page">
       <section className="customize-hero">
         <div className="customize-hero-overlay" />
-        <Image
-          src="/hero-img.png"
-          alt="Himalayan trekking"
-          fill
-          priority
-          sizes="100vw"
-          className="customize-hero-img"
-        />
+        <HeroCollage />
         <div className="customize-hero-content">
           <h1 className="customize-hero-title">Customize Your Trek</h1>
           <nav className="customize-breadcrumb" aria-label="Breadcrumb">

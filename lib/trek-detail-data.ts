@@ -206,7 +206,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
     ],
     pricePerPerson: '₹14,500',
     priceNote: '(Extra 5% GST)',
-    gallery: ['/latest-treks/badasu-pass-trek.png'],
+    gallery: ['/treks-cards-images/badasu-pass-trek.png'],
     rentalGear: STANDARD_RENTAL_GEAR,
   },
   'char-dham-yatra': {
@@ -231,7 +231,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
     ],
     pricePerPerson: 'On Request',
     pdfUrl: 'https://drive.google.com/file/d/1hbxm-2mnMuLm8tdmdUolEPHScrNWoeU9/view?usp=drive_link',
-    gallery: ['/latest-treks/char-dham.png'],
+    gallery: ['/treks-cards-images/char-dham-yatra.png'],
   },
   'gangotri-yamunotri-yatra': {
     name: 'Gangotri & Yamunotri Yatra',
@@ -249,7 +249,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
       { day: 5, title: 'Uttarkashi to Haridwar', description: ['Return journey'], altitude: '300 m' },
     ],
     pricePerPerson: 'On Request',
-    gallery: ['/latest-treks/gangotri-yamnotri-trek.png'],
+    gallery: ['/treks-cards-images/gangotri-yamunotri-yatra.jpg'],
   },
   'kedarnath-badrinath-yatra': {
     name: 'Kedarnath & Badrinath Yatra',
@@ -269,7 +269,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
     ],
     pricePerPerson: 'On Request',
     pdfUrl: 'https://drive.google.com/file/d/10cAKhi34oyKksMfwBx_yyeP8_nKZd1ry/view?usp=drive_link',
-    gallery: ['/latest-treks/kedarnath-badrinath.png'],
+    gallery: ['/treks-cards-images/kedarnath-badrinath-yatra.jpg'],
   },
   'hampta-pass-trek': {
     pdfUrl: 'https://drive.google.com/file/d/1Nqj3q6u2Sa4gx2Qgg6eQRvLhfDa9qo_H/view?usp=sharing',
@@ -293,7 +293,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
     days: 4,
     difficulty: 'Easy',
     pdfUrl: 'https://drive.google.com/file/d/18NNy4f6Jp_UvjJBPJPsIMK0NhsYz_X1E/view?usp=sharing',
-    gallery: ['https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80'],
+    gallery: ['/treks-cards-images/harshil-valley-trek.jpg'],
   },
   'kanchi-dham-nainital-tour': {
     name: 'Kanchi Dham & Nainital Tour',
@@ -302,7 +302,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
     days: 4,
     difficulty: 'Easy',
     pdfUrl: 'https://drive.google.com/file/d/1myQxJfuiY9E7sZQVfQ8hKvSnQr5kJmnH/view?usp=sharing',
-    gallery: ['https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80'],
+    gallery: ['/treks-cards-images/kanchi-dham-nainital-tour.jpg'],
   },
   'mcleod-ganj-triund-trek': {
     name: 'McLeod Ganj & Triund Trek',
@@ -311,7 +311,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
     days: 3,
     difficulty: 'Easy to Moderate',
     pdfUrl: 'https://drive.google.com/file/d/11OFTvNTB1KHM7MwqoP4-uYs_ckHdIRKS/view?usp=sharing',
-    gallery: ['https://images.unsplash.com/photo-1551632811-561732d1e306?w=800&q=80'],
+    gallery: ['/treks-cards-images/mcleod-ganj-triund-trek.jpg'],
   },
   'udaipur-heritage-tour': {
     name: 'Udaipur Heritage Tour',
@@ -320,11 +320,11 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
     days: 4,
     difficulty: 'Easy',
     pdfUrl: 'https://drive.google.com/file/d/113QmD4BSsb2hmfY0oXkR1RunHkClz8JO/view?usp=sharing',
-    gallery: ['https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80'],
+    gallery: ['/treks-cards-images/udaipur-heritage-tour.jpg'],
   },
   'langtang-valley-trek': {
     gallery: [
-      '/langtang-valley.png',
+      '/treks-cards-images/langtang-valley-trek.jpg',
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80',
       'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80',
       'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80',
@@ -356,7 +356,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
       'Please reach Rishikesh a day before to avoid delays',
     ],
     gallery: [
-      '/valley-of-flowers.png',
+      '/treks-cards-images/valley-of-flowers-trek.jpg',
       'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80',
       'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80',
       'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=400&q=80',
@@ -388,7 +388,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
       'Complimentary cloakroom at base camp',
     ],
     gallery: [
-      '/rupin-pass-trek.png',
+      '/treks-cards-images/rupin-pass-trek.jpg',
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80',
       'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80',
       'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=400&q=80',
@@ -420,7 +420,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
       'Complimentary cloakroom at base camp',
     ],
     gallery: [
-      '/phulara-ridge.png',
+      '/treks-cards-images/phulara-ridge-trek.jpg',
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80',
       'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80',
       'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=400&q=80',
@@ -454,7 +454,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
       'Complimentary cloakroom at base camp for safe storage',
     ],
     gallery: [
-      '/kedar-tal.png',
+      '/treks-cards-images/kedar-tal-trek.jpg',
       'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&q=80',
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80',
       'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80',
@@ -487,7 +487,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
       'Please reach Srinagar a day before to avoid delays',
     ],
     gallery: [
-      '/kashmir-great-lake.png',
+      '/treks-cards-images/kashmir-great-lakes-trek.jpg',
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80',
       'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80',
       'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=400&q=80',
@@ -521,7 +521,7 @@ const detailBySlug: Record<string, Partial<TrekDetail>> = {
       'Please reach Rishikesh a day before to avoid delays',
     ],
     gallery: [
-      '/pangar-chulla.png',
+      '/treks-cards-images/pangarchulla-peak-trek.jpg',
       'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&q=80',
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80',
       'https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&q=80',

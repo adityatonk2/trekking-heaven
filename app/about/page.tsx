@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import HeroCollage from '@/components/HeroCollage';
 
 export const metadata: Metadata = {
   title: 'About Us | Trekkers Heaven — Himalayan Trekking Experts',
@@ -19,14 +20,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="about-hero">
         <div className="about-hero-overlay" />
-        <Image
-          src="/hero-img.png"
-          alt="Himalayan trekking adventure"
-          fill
-          priority
-          sizes="100vw"
-          className="about-hero-img"
-        />
+        <HeroCollage />
         <div className="about-hero-content">
           <h1 className="about-hero-title">About Trekkers Heaven</h1>
           <p className="about-hero-subtitle">

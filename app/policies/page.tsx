@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { EMAIL_ADDRESS } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Policies | Trekkers Heaven — Disclaimer, Terms, Privacy & More',
@@ -65,7 +66,7 @@ export default function PoliciesPage() {
               <p>
                 We may update these terms from time to time. Continued use of our
                 services after changes constitutes acceptance. For questions,
-                contact us at info@trekkersheaven.com.
+                contact us at {EMAIL_ADDRESS}.
               </p>
             </article>
 
@@ -85,7 +86,7 @@ export default function PoliciesPage() {
               </p>
               <p>
                 You may request access, correction, or deletion of your data by
-                contacting info@trekkersheaven.com. By using our website and
+                contacting {EMAIL_ADDRESS}. By using our website and
                 services, you consent to this Privacy Policy.
               </p>
             </article>

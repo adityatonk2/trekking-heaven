@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Star, ChevronDown } from 'lucide-react';
 import { defaultReviewsData, type ReviewsData } from '@/lib/reviews-data';
+import TravelerMoments from './TravelerMoments';
 
 interface ReviewsSectionProps {
   data?: ReviewsData | null;
@@ -13,6 +14,8 @@ export default function ReviewsSection({ data }: ReviewsSectionProps) {
   return (
     <section className="reviews-section">
       <h2 className="reviews-title">Reviews</h2>
+
+      <TravelerMoments />
 
       <div className="reviews-summary">
         <div className="reviews-overall">

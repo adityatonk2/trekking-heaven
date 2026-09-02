@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { MapPin, Mail, Phone, Facebook, Instagram, Youtube, AtSign } from 'lucide-react';
-import { TEL_PRIMARY_URL, TEL_SECONDARY_URL, PRIMARY_DISPLAY, SECONDARY_DISPLAY, OFFICE_ADDRESS_FULL } from '@/lib/constants';
+import { TEL_PRIMARY_URL, TEL_SECONDARY_URL, PRIMARY_DISPLAY, SECONDARY_DISPLAY, OFFICE_ADDRESS_FULL, EMAIL_ADDRESS, EMAIL_URL } from '@/lib/constants';
 
 export default function Footer() {
   return (
@@ -41,7 +41,7 @@ export default function Footer() {
           <div className="footer-contact">
             <h4><Mail size={18} className="footer-icon" aria-hidden /> Mail/Write Us</h4>
             <p>
-              <a href="mailto:trekkersheaven@zohomail.in">trekkersheaven@zohomail.in</a>
+              <a href={EMAIL_URL}>{EMAIL_ADDRESS}</a>
             </p>
           </div>
           <div className="footer-contact">

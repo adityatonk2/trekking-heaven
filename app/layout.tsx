@@ -3,7 +3,7 @@ import { DM_Sans } from 'next/font/google';
 import './globals.css';
 import SiteChrome from '@/components/SiteChrome';
 import { SITE_URL, SITE_NAME } from '@/lib/site';
-import { OFFICE_ADDRESS, PRIMARY_DISPLAY } from '@/lib/constants';
+import { OFFICE_ADDRESS, PRIMARY_DISPLAY, EMAIL_ADDRESS } from '@/lib/constants';
 import { THEME_INIT_SCRIPT } from '@/lib/theme-script';
 
 const dmSans = DM_Sans({
@@ -48,6 +48,7 @@ export default function RootLayout({
     url: SITE_URL,
     logo: `${SITE_URL}/new-logo.png`,
     telephone: PRIMARY_DISPLAY,
+    email: EMAIL_ADDRESS,
     address: {
       '@type': 'PostalAddress',
       streetAddress: OFFICE_ADDRESS.line1,

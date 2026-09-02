@@ -662,7 +662,7 @@ button:focus-visible {
 /* Hero Section */
 .hero-section {
   position: relative;
-  min-height: 380px;
+  min-height: 460px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -670,20 +670,33 @@ button:focus-visible {
   overflow: hidden;
 }
 
-.hero-bg-wrapper {
+.hero-bg {
+  object-fit: cover;
+}
+
+/* Shared photo-collage hero background, used on every page hero */
+.hero-collage {
   position: absolute;
   inset: 0;
   z-index: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2px;
 }
 
-.hero-bg {
-  object-fit: cover;
+.hero-collage-tile {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-collage-tile .hero-bg {
+  filter: saturate(1.05);
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(15, 61, 51, 0.7) 0%, rgba(15, 61, 51, 0.4) 40%, rgba(0, 0, 0, 0.75) 100%);
+  background: linear-gradient(to bottom, rgba(15, 61, 51, 0.72) 0%, rgba(15, 61, 51, 0.55) 40%, rgba(0, 0, 0, 0.8) 100%);
   z-index: 1;
 }
 
@@ -692,27 +705,144 @@ button:focus-visible {
   z-index: 2;
   text-align: center;
   padding: var(--space-2xl) var(--space-lg);
+  max-width: 780px;
+  margin: 0 auto;
 }
 
 .hero-subtitle {
-  font-size: var(--font-size-base);
-  color: rgba(255, 255, 255, 0.95);
-  margin-bottom: var(--space-xs);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(6px);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #fff;
+  margin-bottom: var(--space-md);
 }
 
 .hero-title {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  color: white;
-  margin-bottom: var(--space-md);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: clamp(2.75rem, 6vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  color: #fff;
+  margin-bottom: var(--space-lg);
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
 }
 
 .hero-desc {
-  font-size: var(--font-size-lg);
-  color: rgba(255, 255, 255, 0.95);
-  max-width: 640px;
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 620px;
+  margin: 0 auto;
   line-height: var(--line-height-relaxed);
+}
+
+/* Customize Your Trek — big homepage CTA banner */
+.customize-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 560px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-3xl);
+  isolation: isolate;
+}
+
+.customize-banner-img {
+  object-fit: cover;
+  object-position: center 30%;
+  z-index: -2;
+}
+
+.customize-banner-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 42, 35, 0.55) 0%, rgba(10, 42, 35, 0.75) 55%, rgba(10, 42, 35, 0.92) 100%);
+  z-index: -1;
+}
+
+.customize-banner-content {
+  text-align: center;
+  max-width: 720px;
+  padding: var(--space-2xl) var(--space-lg);
+  color: #fff;
+}
+
+.customize-banner-eyebrow {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent, #f2b134);
+  margin-bottom: var(--space-sm);
+}
+
+.customize-banner-title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--space-md);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.customize-banner-desc {
+  font-size: var(--font-size-lg);
+  color: rgba(255, 255, 255, 0.92);
+  line-height: var(--line-height-relaxed);
+  margin-bottom: var(--space-xl);
+}
+
+.customize-banner-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.customize-banner-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  backdrop-filter: blur(4px);
+}
+
+.customize-banner-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-base);
+  padding: var(--space-md) var(--space-2xl);
+}
+
+@media (max-width: 768px) {
+  .customize-banner {
+    min-height: 480px;
+    border-radius: var(--radius-md);
+  }
+
+  .customize-banner-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .customize-banner-desc {
+    font-size: var(--font-size-base);
+  }
 }
 
 /* Section block: title + intro + CTA (e.g. Blogs, Videos) */
@@ -863,6 +993,46 @@ button:focus-visible {
   font-weight: var(--font-weight-bold);
   color: var(--color-text);
   margin-bottom: var(--space-lg);
+}
+
+.traveler-moments {
+  margin-bottom: var(--space-xl);
+}
+
+.traveler-moments-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.traveler-moments-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-sm);
+}
+
+.traveler-moments-thumb {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.traveler-moments-img {
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+.traveler-moments-thumb:hover .traveler-moments-img {
+  transform: scale(1.06);
+}
+
+@media (max-width: 768px) {
+  .traveler-moments-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .reviews-summary {
@@ -2875,11 +3045,71 @@ button:focus-visible {
 }
 
 /* Trek Cards */
+.trek-section-tinted {
+  background: var(--color-bg-alt);
+  padding: var(--space-2xl) var(--space-lg);
+  border-radius: var(--radius-lg);
+}
+
 .trek-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-md);
   align-items: start;
+}
+
+.trek-card-viewall {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  text-align: center;
+  padding: var(--space-lg);
+  min-height: 280px;
+  background: var(--color-bg-card);
+  border: 1.5px dashed var(--color-border);
+  color: var(--color-primary);
+  text-decoration: none;
+  transition:
+    border-color var(--transition-base),
+    background var(--transition-base);
+}
+
+.trek-card-viewall:hover {
+  border-color: var(--color-secondary);
+  background: var(--color-bg-alt);
+}
+
+.trek-card-viewall-count {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-secondary-dark);
+}
+
+.trek-card-viewall-label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+}
+
+.trek-card-viewall-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-bg-alt);
+  color: var(--color-primary);
+  margin-top: var(--space-xs);
+  transition: transform var(--transition-base);
+}
+
+.trek-card-viewall:hover .trek-card-viewall-arrow {
+  transform: translateX(4px);
+  background: var(--color-secondary);
+  color: #fff;
 }
 
 .trek-grid-large {
@@ -4298,12 +4528,12 @@ button:focus-visible {
   }
 
   .hero-section {
-    min-height: 280px;
+    min-height: 380px;
     padding: var(--space-xl) var(--space-md);
   }
 
-  .hero-title {
-    font-size: var(--font-size-2xl);
+  .hero-collage {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .hero-desc {
@@ -4393,23 +4623,23 @@ button:focus-visible {
   }
 
   .hero-section {
-    min-height: 240px;
+    min-height: 340px;
     padding: var(--space-lg) var(--space-md);
   }
 
   .hero-title {
-    font-size: var(--font-size-xl);
     margin-bottom: var(--space-sm);
   }
 
   .hero-subtitle {
-    font-size: var(--font-size-sm);
+    font-size: 0.7rem;
+    padding: 0.35rem 0.85rem;
     margin-bottom: var(--space-sm);
   }
 
   .hero-desc {
     font-size: var(--font-size-sm);
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
   .trek-card-content {
@@ -6861,7 +7091,7 @@ button:focus-visible {
   cursor: not-allowed;
 }
 
-/* Trek photo carousel */
+/* Trek photo marquee */
 .trek-carousel-section {
   text-align: center;
 }
@@ -6871,102 +7101,74 @@ button:focus-visible {
   margin-right: auto;
 }
 
-.trek-carousel {
+.trek-marquee {
   position: relative;
-  max-width: var(--container-max);
-  margin: 0 auto;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  box-shadow: 0 12px 32px rgba(15, 61, 51, 0.15);
-}
-
-.trek-carousel-viewport {
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;
 }
 
-.trek-carousel-track {
-  display: flex;
-  transition: transform 0.5s ease;
-}
-
-.trek-carousel-slide {
-  position: relative;
-  flex: 0 0 100%;
-  aspect-ratio: 16 / 8;
-  background: var(--color-bg-alt);
-}
-
-.trek-carousel-img {
-  object-fit: cover;
-}
-
-.trek-carousel-nav {
+.trek-marquee-fade {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.75rem;
-  height: 2.75rem;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.85);
-  color: var(--color-primary);
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  top: 0;
+  bottom: 0;
+  width: 80px;
   z-index: 2;
+  pointer-events: none;
 }
 
-.trek-carousel-nav:hover {
-  background: #fff;
-  transform: translateY(-50%) scale(1.08);
-}
-
-.trek-carousel-prev {
-  left: var(--space-md);
-}
-
-.trek-carousel-next {
-  right: var(--space-md);
-}
-
-.trek-carousel-dots {
-  position: absolute;
+.trek-marquee-fade-left {
   left: 0;
+  background: linear-gradient(to right, var(--color-bg) 0%, transparent 100%);
+}
+
+.trek-marquee-fade-right {
   right: 0;
-  bottom: var(--space-md);
+  background: linear-gradient(to left, var(--color-bg) 0%, transparent 100%);
+}
+
+.trek-marquee-track {
   display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  z-index: 2;
+  align-items: center;
+  width: max-content;
+  gap: var(--space-md);
+  animation: trek-marquee-scroll 45s linear infinite;
 }
 
-.trek-carousel-dot {
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  border: none;
-  background: rgba(255, 255, 255, 0.55);
-  cursor: pointer;
-  padding: 0;
-  transition: background 0.2s ease, width 0.2s ease;
+.trek-marquee:hover .trek-marquee-track {
+  animation-play-state: paused;
 }
 
-.trek-carousel-dot.active {
-  background: #fff;
-  width: 1.5rem;
-  border-radius: 999px;
+.trek-marquee-slide {
+  position: relative;
+  flex: 0 0 auto;
+  height: 320px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(15, 61, 51, 0.12);
+}
+
+.trek-marquee-img {
+  height: 100%;
+  width: auto;
+  display: block;
+  object-fit: contain;
+}
+
+@keyframes trek-marquee-scroll {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
+  }
 }
 
 @media (max-width: 768px) {
-  .trek-carousel-slide {
-    aspect-ratio: 4 / 3;
+  .trek-marquee-slide {
+    height: 220px;
   }
 
-  .trek-carousel-nav {
-    width: 2.25rem;
-    height: 2.25rem;
+  .trek-marquee-fade {
+    width: 40px;
   }
 }

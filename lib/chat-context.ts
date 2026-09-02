@@ -4,6 +4,7 @@ import {
   SECONDARY_DISPLAY,
   WHATSAPP_URL,
   OFFICE_ADDRESS_FULL,
+  EMAIL_ADDRESS,
 } from './constants';
 import { SITE_NAME } from './site';
 
@@ -25,6 +26,7 @@ Help website visitors with questions about treks, bike tours, village tours, gea
 - Office: ${OFFICE_ADDRESS_FULL}
 - Phone/WhatsApp: ${PRIMARY_DISPLAY}, ${SECONDARY_DISPLAY}
 - WhatsApp chat link: ${WHATSAPP_URL}
+- Email: ${EMAIL_ADDRESS}
 
 ## Trek catalogue (name, duration, difficulty, starting point)
 ${buildTrekCatalogue()}
